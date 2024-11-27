@@ -21,7 +21,7 @@ The project performs the following key tasks:
 
 - `run_analysis.R`: The R script that performs the data cleaning and transformation tasks.
 - `CodeBook.md`: A document describing the variables in the dataset, the data, and the transformations applied.
-- `finalTidyData.txt`: The resulting tidy dataset created by the `run_analysis.R` script.
+- `tidyData.txt`: The resulting tidy dataset created by the `run_analysis.R` script.
 - `README.md`: This file, which explains the purpose, structure, and execution of the project.
 
 ---
@@ -64,7 +64,7 @@ The dataset contains measurements of human activity using accelerometers in a sm
    - Melts the data to a long format and calculates the average of each variable for each activity and subject.
 
 8. Write Tidy Dataset:
-   - Exports the tidy dataset as `finalTidyData.txt`.
+   - Exports the tidy dataset as `tidyData.txt`.
 
 ---
 
