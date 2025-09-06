@@ -1,79 +1,76 @@
-# Getting-and-Cleaning-Data-Course-Project
+# 📊 Human Activity Recognition Data Cleaning
 
-This project demonstrates the ability to collect, clean, and prepare data for analysis. The data used in this project was collected from the accelerometers of the Samsung Galaxy S smartphone, as part of the [Human Activity Recognition Using Smartphones Dataset](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones).
+## 📖 Overview
+This project demonstrates how to collect, clean, and prepare data for analysis using R.  
+The dataset comes from the accelerometers of the Samsung Galaxy S smartphone, part of the [Human Activity Recognition Using Smartphones Dataset](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones).  
 
-The goal of this project is to transform raw data into a tidy dataset that can be used for future analysis. This `README.md` explains the structure of the project, the R script, and the steps followed to achieve the goal.
-
----
-
-## Project Overview
-
-The project performs the following key tasks:
-1. Merges the training and test datasets to create one comprehensive dataset.
-2. Extracts only the measurements on the mean and standard deviation for each measurement.
-3. Uses descriptive activity names to label the activities in the dataset.
-4. Appropriately labels the dataset with descriptive variable names.
-5. Creates an independent tidy dataset with the average of each variable for each activity and subject.
+The goal is to transform raw sensor data into a tidy dataset suitable for analysis, with clearly labeled variables and summarized measurements.
 
 ---
 
-## Files in the Repository
+## ✨ Project Tasks
+The main steps performed in this project are:
 
-- `run_analysis.R`: The R script that performs the data cleaning and transformation tasks.
-- `CodeBook.md`: A document describing the variables in the dataset, the data, and the transformations applied.
-- `tidyData.txt`: The resulting tidy dataset created by the `run_analysis.R` script.
-- `README.md`: This file, which explains the purpose, structure, and execution of the project.
+1. Merge training and test datasets into a single dataset.  
+2. Extract only measurements on the mean and standard deviation for each variable.  
+3. Assign descriptive activity names.  
+4. Label the dataset with descriptive variable names.  
+5. Create a tidy dataset with the average of each variable for each activity and subject.
 
 ---
 
-## Input Data
+## 📂 Repository Contents
 
-The raw dataset is sourced from the following URL:  
+- `run_analysis.R` – R script performing the full data cleaning and transformation workflow.  
+- `CodeBook.md` – Description of the dataset, variables, and transformations applied.  
+- `tidyData.txt` – The resulting tidy dataset produced by the script.  
+- `README.md` – This file, explaining the project structure and workflow.
+
+---
+
+## 📥 Input Data
+The raw dataset is available here:  
 [Human Activity Recognition Using Smartphones Dataset](https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip)
 
-The dataset contains measurements of human activity using accelerometers in a smartphone, including activities such as walking, sitting, and standing.
+The data contains measurements of human activities (walking, sitting, standing, etc.) using smartphone accelerometers.
 
 ---
 
-## Script Details: `run_analysis.R`
+## 🛠️ Script Workflow: `run_analysis.R`
 
-### Steps Performed by the Script:
+1. **Download and Unzip Data**  
+   - Downloads the dataset and extracts files into the working directory.  
 
-1. Download and Unzip Data:
-   - The script downloads the dataset from the provided URL and unzips it into the working directory.
+2. **Load Activity Labels and Features**  
+   - Reads `activity_labels.txt` for descriptive activity names.  
+   - Reads `features.txt` to identify variables and select mean/std measurements.  
 
-2. Load Activity Labels and Features:
-   - Reads `activity_labels.txt` for descriptive activity names.
-   - Reads `features.txt` to identify measurements and filter those related to mean and standard deviation.
+3. **Filter Mean and Standard Deviation Variables**  
+   - Extracts only relevant measurements and renames them with descriptive names.  
 
-3. Filter Mean and Standard Deviation Variables:
-   - Extracts only the measurements related to mean and standard deviation.
-   - Renames these variables with descriptive names.
+4. **Load Training and Test Data**  
+   - Reads `X_train.txt`/`X_test.txt`, adding activity (`y_train.txt`/`y_test.txt`) and subject (`subject_train.txt`/`subject_test.txt`) columns.  
 
-4. Load Training and Test Data:
-   - Reads the training (`X_train.txt`) and test (`X_test.txt`) datasets.
-   - Adds activity (`y_train.txt`, `y_test.txt`) and subject (`subject_train.txt`, `subject_test.txt`) columns.
+5. **Merge Training and Test Data**  
+   - Combines both datasets into a single unified dataset.  
 
-5. Merge Training and Test Data:
-   - Combines the training and test datasets into one unified dataset.
+6. **Label Activities and Subjects**  
+   - Applies descriptive activity names and converts subjects into factors.  
 
-6. Label Activities and Subjects:
-   - Assigns descriptive activity names and converts subject identifiers into factors.
+7. **Reshape and Summarize Data**  
+   - Melts data into long format and computes the average of each variable for each activity and subject.  
 
-7. Reshape and Summarize Data:
-   - Melts the data to a long format and calculates the average of each variable for each activity and subject.
-
-8. Write Tidy Dataset:
-   - Exports the tidy dataset as `tidyData.txt`.
+8. **Write Tidy Dataset**  
+   - Exports the cleaned, summarized dataset as `tidyData.txt`.
 
 ---
 
-## How to Run the Script
+## 🚀 How to Run
 
-1. Ensure you have R and the required packages (`data.table`, `reshape2`, `gsubfn`) installed.
-2. Download the raw dataset using the link provided above.
-3. Place the `run_analysis.R` script in your working directory.
-4. Run the script in R using the command:
+1. Ensure R is installed with the following packages: `data.table`, `reshape2`, `gsubfn`.  
+2. Download and unzip the dataset (see Input Data section).  
+3. Place `run_analysis.R` in your working directory.  
+4. Run the script in R:
 
-   ```R
-   source("run_analysis.R")
+```r
+source("run_analysis.R")
